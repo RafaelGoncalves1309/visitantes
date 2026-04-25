@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  position: relative;
+}
+
+/* FUNDO */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: url('fundo.jpeg') no-repeat center center;
+  background-size: cover;
+
+  z-index: -2;
+}
+
+/* CAMADA DE TRANSPARÊNCIA (overlay) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.5); /* controla a “transparência” */
+
+  z-index: -1;
+}
+.container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+#logo {
+  height: 60px;
+  width: 70px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  color: #11005e;
+  
+}
+
+p {
+  color: #11005e;  
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #11005e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6b71c4;
+}
+
+.small {
+  font-size: 12px;
+  color: #11005e;
+  margin-top: 10px;
+}

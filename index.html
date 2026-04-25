@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Bem-vindo!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="visitantes.css">
+</head>
+
+<body>
+
+    
+   <div class="container">
+        <div class="header"> 
+            <img src="logo_paz.png" alt="Logo Paz" id="logo">    
+    </div>
+    
+    <h1>Seja bem-vindo à Paz Church São Caetano !</h1>
+    
+    <p>
+      Estamos muito felizes com a sua visita !  
+      Preencha seus dados e receba um presente especial
+    </p>
+
+    <form id="form">
+
+      <input type="text" name="nome" placeholder="Nome" required>
+      
+      <input type="email" name="email" placeholder="Email" required>
+      
+     <input 
+        type="tel" 
+        id="telefone" 
+        name="telefone" 
+        placeholder="Telefone" 
+        inputmode="numeric"
+        required
+    >
+      
+      <input type="text" name="endereco" placeholder="Endereço">
+      <input type="text" name="bairro" placeholder="Bairro">
+      <input type="text" name="cidade" placeholder="Cidade">
+     
+
+      <button type="submit">Receber meu eBook</button>
+
+      <div class="small">
+        Seus dados serão usados apenas para contato com você.
+      </div>
+    </form>
+  </div>
+
+  <!-- JS separado -->
+  <script src="script.js"></script>
+
+</body>
+</html>
