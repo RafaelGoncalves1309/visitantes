@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Bem-vindo!</title>
+  <title>Bem-vindo à Paz Church São Caetano!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="visitantes.css">
@@ -16,18 +16,20 @@
             <img src="logo_paz.png" alt="Logo Paz" id="logo">    
     </div>
     
-    <h1>Seja bem-vindo à Paz Church São Caetano !</h1>
+    <h2>Seja bem-vindo à Paz Church São Caetano !</h2>
     
     <p>
-      Estamos muito felizes com a sua visita !  
-      Preencha seus dados e receba um presente especial
+      Estamos muito felizes com a sua presença !  
+    </p>
+    <p>
+      Preencha seus dados abaixo e receba um presente especial
     </p>
 
     <form id="form">
 
       <input type="text" name="nome" placeholder="Nome" required>
       
-      <input type="email" name="email" placeholder="Email" required>
+     <!-- <input type="email" name="email" placeholder="Email" required> -->
       
      <input 
         type="tel" 
@@ -38,16 +40,30 @@
         required
     >
       
-      <input type="text" name="endereco" placeholder="Endereço">
+     <!-- <input type="text" name="endereco" placeholder="Endereço"> --> 
+
       <input type="text" name="bairro" placeholder="Bairro">
       <input type="text" name="cidade" placeholder="Cidade">
      
+    <div class="dados">
+        <label class="checkbox-linha">
+            <input type="checkbox" id="aceito">
+            <span>Aceito receber informações sobre a Paz Church em meu whatsapp</span>
+        </label>
+    </div>
 
-      <button type="submit">Receber meu eBook</button>
+    <button type="submit">Enviar
+   </button>
 
-      <div class="small">
-        Seus dados serão usados apenas para contato com você.
-      </div>
+    
+
+  
+<!-- 
+<div class="small">
+  Seus dados serão usados apenas para contato com você.
+</div>
+-->
+
     </form>
   </div>
 

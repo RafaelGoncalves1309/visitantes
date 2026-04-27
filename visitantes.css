@@ -34,23 +34,22 @@ body::after {
 }
 .container {
   background: #ffffff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 12px;
-  max-width: 400px;
+  max-width: 380px;
   width: 90%;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   text-align: center;
 }
 
 #logo {
-  height: 60px;
-  width: 70px;
+  height: 50px;
+  width: 60px;
 }
 
-h1 {
+h2 {
   margin-bottom: 10px;
-  color: #11005e;
-  
+  color: #11005e;  
 }
 
 p {
@@ -60,12 +59,13 @@ p {
 }
 
 input {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #11005e;
   font-size: 14px;
+  color:#11005e;
 }
 
 button {
@@ -87,4 +87,20 @@ button:hover {
   font-size: 12px;
   color: #11005e;
   margin-top: 10px;
+}
+
+.checkbox-linha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.checkbox-linha input {
+  flex: 0; /* não cresce */
+}
+
+.checkbox-linha span {
+  flex: 1; /* ocupa todo o resto da largura */
+  color: #11005e; 
 }
