@@ -41,7 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
       // 👇 Checkbox
       dados.append('termos', checkbox.checked ? 'sim' : 'não');
 
-      fetch("https://script.google.com/macros/s/AKfycbz018OxnFEFqR_dFi0xLW6oiAUG74qXfN5wpivtOG3t-CNIoxfAicKGiQa1b6Mpxuy-UA/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbwpaiyWpFFiG9WZsaorpxieT6_GMrS7jJiMgg4qzxFAcJm2IEjAjQkGd5gRawGUxmhx/exec", {
+       
+        
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
