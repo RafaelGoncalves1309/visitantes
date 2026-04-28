@@ -38,27 +38,24 @@ document.addEventListener('DOMContentLoaded', function () {
       dados.append('bairro', form.bairro.value);
       dados.append('cidade', form.cidade.value);
 
-      // 👇 Checkbox
+      // Checkbox
       dados.append('termos', checkbox.checked ? 'sim' : 'não');
 
+      // 🚀 envio em background
       fetch("https://script.google.com/macros/s/AKfycbwpaiyWpFFiG9WZsaorpxieT6_GMrS7jJiMgg4qzxFAcJm2IEjAjQkGd5gRawGUxmhx/exec", {
-       
-        
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
         body: dados.toString()
-      })
-      .then(() => {
-        window.location.href = "obrigado.html";
-      })
-      .catch(() => {
-        alert("Erro ao enviar. Tente novamente.");
+      }).catch(() => {
+        console.log("Falha no envio (não bloqueia o usuário)");
       });
 
-    }); // 👈 FECHA submit
+      // 🚀 redireciona imediato
+      window.location.href = "obrigado.html";
+
+    });
   }
 
-}); // 👈 FECHA DOMContentLoaded
-
+});
