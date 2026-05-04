@@ -5,7 +5,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding: 16px;
 
   position: relative;
 }
@@ -28,16 +32,17 @@ body::after {
   position: fixed;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.5); /* controla a “transparência” */
+  background: rgba(0, 0, 0, 0.5);
 
   z-index: -1;
 }
+
 .container {
   background: #ffffff;
   padding: 20px;
   border-radius: 12px;
   max-width: 380px;
-  width: 90%;
+  width: 100%;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   text-align: center;
 }
@@ -49,23 +54,24 @@ body::after {
 
 h2 {
   margin-bottom: 10px;
-  color: #11005e;  
+  color: #11005e;
 }
 
 p {
-  color: #11005e;  
+  color: #11005e;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
 input {
-  width: 90%;
+  width: 100%;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 8px;
   border: 1px solid #11005e;
-  font-size: 14px;
-  color:#11005e;
+  font-size: 16px; /* evita zoom no iPhone */
+  color: #11005e;
+  box-sizing: border-box;
 }
 
 button {
@@ -94,13 +100,14 @@ button:hover {
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .checkbox-linha input {
-  flex: 0; /* não cresce */
+  flex: 0;
 }
 
 .checkbox-linha span {
-  flex: 1; /* ocupa todo o resto da largura */
-  color: #11005e; 
+  flex: 1;
+  color: #11005e;
 }
