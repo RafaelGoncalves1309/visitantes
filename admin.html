@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Convidados</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="topo">
+    <h2>Convidados</h2>
+    <button id="btnLogout">Sair</button>
+  </div>
+
+  <!-- 🔎 Filtros -->
+  <div class="filtros">
+    <div class="campo">
+      <label>Data início</label>
+      <input type="date" id="dataInicio">
+    </div>
+
+    <div class="campo">
+      <label>Data fim</label>
+      <input type="date" id="dataFim">
+    </div>
+
+    <button id="btnFiltrar">Filtrar</button>
+    <button id="btnExportar">Exportar Excel</button>
+   
+  </div>
+
+  <!-- 📊 Tabela -->
+  <div class="tabela-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Bairro</th>
+          <th>Cidade</th>
+          <th>Aceita Info</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>

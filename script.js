@@ -1,7 +1,13 @@
 // Aguarda o DOM carregar
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Máscara de telefone
+  // 🔗 Conexão com Supabase
+  const supabase = window.supabase.createClient(
+    'https://tkgkrftlwhzibpizhpqt.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrZ2tyZnRsd2h6aWJwaXpocHF0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5ODY1MzksImV4cCI6MjA5MzU2MjUzOX0.YbSXXMAr3br370uovvUNJ4v82lMS9UB0f752yUJhezE'
+  );
+
+  // 📱 Máscara de telefone
   const telefoneInput = document.getElementById('telefone');
 
   if (telefoneInput) {
@@ -22,39 +28,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Envio do formulário
+  // 📤 Envio do formulário
   const form = document.getElementById('form');
 
   if (form) {
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
       const checkbox = document.getElementById('aceito');
 
-      const dados = new URLSearchParams();
+      const dados = {
+        nome: form.nome.value,
+        telefone: form.telefone.value,
+        bairro: form.bairro.value,
+        cidade: form.cidade.value,
+        aceita_info: checkbox.checked ? 'sim' : 'não'
+      };
 
-      dados.append('nome', form.nome.value);
-      dados.append('telefone', form.telefone.value);
-      dados.append('bairro', form.bairro.value);
-      dados.append('cidade', form.cidade.value);
+      // 🚀 envia para o Supabase
+      const { error } = await supabase
+        .from('convidados')
+        .insert([dados]);
 
-      // Checkbox
-      dados.append('termos', checkbox.checked ? 'sim' : 'não');
+      if (error) {
+        console.error('Erro ao salvar:', error);
+        alert('Erro ao enviar. Tente novamente.');
+        return;
+      }
 
-      // 🚀 envio em background
-      fetch("https://script.google.com/macros/s/AKfycbwpaiyWpFFiG9WZsaorpxieT6_GMrS7jJiMgg4qzxFAcJm2IEjAjQkGd5gRawGUxmhx/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: dados.toString()
-      }).catch(() => {
-        console.log("Falha no envio (não bloqueia o usuário)");
-      });
-
-      // 🚀 redireciona imediato
+      // ✅ redireciona
       window.location.href = "obrigado.html";
-
     });
   }
 

@@ -13,7 +13,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url('fundo.jpeg') no-repeat center center;
+  background: url('Inauguracao.jpg') no-repeat center center;
   background-size: cover;
   z-index: -2;
 }
