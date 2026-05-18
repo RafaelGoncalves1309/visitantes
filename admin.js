@@ -18,20 +18,82 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+
+  async function abrirEdicao(item) {
+
+  const novaOrigem = prompt(
+    "Origem:",
+    item.origem || ''
+  );
+
+  if (novaOrigem === null) return;
+
+  const { error } = await supabase
+    .from('convidados_admin')
+    .update({
+      origem: novaOrigem
+    })
+    .eq('id', item.id);
+
+  if (error) {
+    console.error(error);
+    alert('Erro ao atualizar');
+    return;
+  }
+
+  alert('Atualizado com sucesso');
+
+  carregarDados();
+}
+
   // 🚪 Logout
   async function logout() {
     await supabase.auth.signOut();
     window.location.href = "login.html";
   }
 
-  // 📊 Buscar dados
+
+
+
+  function getStatusIcon(status) {
+
+  switch(status) {
+
+    case 'Novo':
+      return '⚪';
+
+    case 'Em Conversa':
+      return '📞';
+
+    case 'Sem Resposta':      
+      return '🔴';
+
+    case 'Sem Interesse no Momento':
+      return '🟨';
+
+    case 'Concluído':
+      return '✅';
+
+    case 'Transição':
+      return '🔵';
+
+    case 'Dados Incorretos':
+      return '❌';
+
+    default:
+      return '❔';
+  }
+}
+
+  
+  // 📊 Buscar dados  <td>${item.status_convidado || ''}</td>
   async function carregarDados() {
  
     const dataInicio = document.getElementById('dataInicio').value;
     const dataFim = document.getElementById('dataFim').value;
 
     let query = supabase
-      .from('convidados')
+      .from('convidados_admin')
       .select('*')
       .order('created_at', { ascending: false });
 
@@ -56,20 +118,38 @@ document.addEventListener('DOMContentLoaded', function () {
       const tr = document.createElement('tr');
 
       tr.innerHTML = `
+        <td>${new Date(item.created_at).toLocaleString()}</td>
+        <td>${item.origem || ''}</td>
         <td>${item.nome || ''}</td>
         <td>${item.telefone || ''}</td>
         <td>${item.bairro || ''}</td>
-        <td>${item.cidade || ''}</td>
-        <td>${item.aceita_info || ''}</td>
-        <td>${new Date(item.created_at).toLocaleString()}</td>
+        <td>${item.cidade || ''}</td>        
+        <td>${getStatusIcon(item.status_convidado)}
+            ${item.status_convidado || ''}
+        </td>
+        <td>${item.responsavel || ''}</td> 
+         <td>${item.lider || ''}</td> 
+        <td>${item.comentarios || ''}</td> 
+        <td>
+            <button class="btn-editar" data-id="${item.id}">
+                Editar
+            </button>
+        </td>
       `;
 
       tbody.appendChild(tr);
+
+      const btnEditar = tr.querySelector('.btn-editar');
+      btnEditar.addEventListener('click', () => {
+      window.location.href = `editar.html?id=${item.id}`;
+       
+      });      
+    
     });
   }
 
 
-  const btnExportar = document.getElementById('btnExportar');
+const btnExportar = document.getElementById('btnExportar');
 
 btnExportar.addEventListener('click', exportarExcel);
 
@@ -80,7 +160,7 @@ async function exportarExcel() {
   const busca = document.getElementById('busca')?.value || '';
 
   let query = supabase
-    .from('convidados')
+    .from('convidados_admin')
     .select('*')
     .order('created_at', { ascending: false });
 
@@ -104,14 +184,20 @@ async function exportarExcel() {
     return;
   }
 
+    
+
   // 📊 transforma dados
 const dadosFormatados = data.map(item => ({
   Data: new Date(item.created_at).toLocaleString(),
-  Nome: item.nome || '',
+  Origem: item.origem || '', 
+  Nome: item.nome || '',  
   Telefone: item.telefone || '',
   Bairro: item.bairro || '',
-  Cidade: item.cidade || '',
-  "Aceita Info": item.aceita_info || ''
+  Cidade: item.cidade || '', 
+  Status: item.status_convidado || '',   
+  Responsavel: item.responsavel || '',
+  "Lider-Life": item.lider || '',
+  Comentarios: item.comentarios || '',
 }));
 
   // 📁 cria planilha
@@ -135,3 +221,4 @@ const dadosFormatados = data.map(item => ({
 
   document.getElementById('btnExportar').addEventListener('click', exportarExcel);
 });
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Relatórios</title>
+
+  <link rel="stylesheet" href="relatorios.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="relatorios.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Relatórios</h1>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+      <div class="card">
+        <h3>Total</h3>
+        <p id="totalConvidados">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Concluídos</h3>
+        <p id="totalConcluidos">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Sem Resposta</h3>
+        <p id="totalSemResposta">0</p>
+      </div>
+
+      <div class="card">
+        <h3>Dados Incorretos</h3>
+        <p id="totalDadosIncorretos">0</p>
+      </div>
+
+    </div>
+
+
+    <!-- RELATÓRIO POR STATUS -->
+    <div class="bloco">
+      <h2>Status</h2>
+      <div id="relatorioStatus"></div>
+    </div>
+
+
+    <!-- RELATÓRIO POR ORIGEM -->
+    <div class="bloco">
+      <h2>Origem</h2>
+      <div id="relatorioOrigem"></div>
+    </div>
+
+
+    <!-- RELATÓRIO POR CIDADE -->
+    <div class="bloco">
+      <h2>Cidades</h2>
+      <div id="relatorioCidade"></div>
+    </div>
+
+
+    <!-- TABELA -->
+    <div class="bloco">
+
+      <h2>Últimos Cadastros</h2>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Origem</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabelaRelatorio"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
+
+

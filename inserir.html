@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Convidado</title>
+
+  <link rel="stylesheet" href="inserir.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+
+    <h2>Cadastrar Convidado</h1>
+
+    <div class="life-card">
+    
+        <div class="linha">
+            <div class="field">
+                    <label>Nome</label>
+                    <input type="text" id="nome">
+            </div>   
+                    
+            <div class="field">
+                <label>Telefone</label>
+               
+                <input  type="tel" 
+                        id="telefone" 
+                        name="telefone" 
+                       
+                        inputmode="numeric"
+                        required>
+            </div>
+            
+            <div class="field">
+                <label>Bairro</label>
+                <input type="text" id="bairro">
+            </div>
+            
+            <div class="field">
+                <label>Cidade</label>
+                <input type="text" id="cidade">
+            </div>  
+
+        </div>
+
+        <br><br>
+
+
+
+        <div class="linha">
+
+            <div class="field">
+                <label>Data do Cadastro</label>
+                <input type="datetime-local" id="datacadastro">
+            </div>
+
+            <div class="field">
+                <label>Origem</label>
+                <select id="origem">
+                    <option value="">Selecione</option>
+                    <option value="QR-Code">QR-Code</option>                    
+                    <option value="Pescaria">Pescaria</option>
+                    <option value="Website Paz Church">Website Paz Church</option>
+                </select>
+            </div>
+            
+            <div class="field">
+                <label>Responsável</label>
+                <select id="respcontato">
+                    <option value="">Selecione</option>
+                    <option value="Barbara">Barbara</option>
+                    <option value="Danilo">Danilo</option> 
+                    <option value="Roberta">Roberta</option>    
+                </select>
+            </div>
+          
+            <div class="field">
+                <label>Status</label>
+               <select id="status">
+                    <option value="">Selecione</option>
+                    <option value="Novo">Novo</option>
+                    <option value="Em Conversa">Em Conversa</option>  
+                    <option value="Sem Resposta">Sem Resposta</option>
+                    <option value="Sem Interesse no Momento">Sem Interesse no Momento</option>
+                    <option value="Transição">Transição</option>
+                    <option value="Concluído">Concluído</option>  
+                    <option value="Dados Incorretos">Dados Incorretos</option> 
+                </select>
+            </div> 
+
+        </div>
+
+        <br><br>
+
+        <div class="linha">
+            <div class="field">
+                <label>Comentários</label>
+                <input type="text" id="comentarios">
+            </div>
+        </div>
+        
+        <br><br>  
+
+        <button id="btnInserir">Cadastrar</button>
+        <button id="btnVoltar" onclick="window.location.href='admin.html'">
+        Voltar
+        </button>
+    </div>
+
+    <script src="inserir.js"></script>
+    <div id="toast" class="toast"></div>
+
+    </body>
+</html>

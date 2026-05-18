@@ -1,0 +1,157 @@
+/* editar.css */
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f6fa;
+  font-family: 'Montserrat', sans-serif;
+  color: #11005e;
+}
+
+/* ===== TÍTULO ===== */
+h1 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  color: #11005e;
+}
+
+/* ===== CARD ===== */
+.life-card {
+  background-color: #ffffff;
+  max-width: 88%;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  border-left: 6px solid #11005e;
+  box-sizing: border-box;
+  }
+
+.linha{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;  
+  }
+
+  .field {
+    flex: 1;
+  /*display: flex; */
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ===== LABEL ===== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #11005e;
+}
+
+/* ===== INPUTS E SELECTS ===== */
+input,
+select {
+  width: 100%;
+  height: 45px;
+  padding: 8px 10px;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  font-size: 12px;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+  background-color: #fff;
+}
+
+/* ===== FOCUS ===== */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #8071c2;
+  box-shadow: 0 0 0 3px rgba(128, 113, 194, 0.15);
+}
+
+/* ===== BOTÃO ===== */
+#btnSalvar {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #11005e;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* ===== HOVER BOTÃO ===== */
+#btnSalvar:hover {
+  background-color: #8071c2;
+  transform: translateY(-2px);
+}
+
+#btnVoltar {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background-color: #11005e;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* ===== HOVER BOTÃO ===== */
+#btnVoltar:hover {
+  background-color: #8071c2;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .life-card {
+    padding: 18px;
+  }
+
+  #btnSalvar {
+    max-width: 100%;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2ecc71;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

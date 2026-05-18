@@ -10,7 +10,7 @@
 <div class="container">
 
   <div class="topo">
-    <h2>Convidados</h2>
+    <h2>Administração de Convidados</h2>
     <button id="btnLogout">Sair</button>
   </div>
 
@@ -27,6 +27,18 @@
     </div>
 
     <button id="btnFiltrar">Filtrar</button>
+    
+    <button onclick="window.location.href='inserir.html'">Inserir Convidado</button>
+
+    <button onclick="window.open('https://app.powerbi.com/links/uAjTG82csf?ctid=1120e9ac-4f0e-4919-ad68-58e59c2046cf&pbi_source=linkShare', '_blank')">
+  📊 Abrir Relatório
+</button>
+
+
+
+
+    
+
     <button id="btnExportar">Exportar Excel</button>
    
   </div>
@@ -35,20 +47,24 @@
   <div class="tabela-container">
     <table>
       <thead>
-        <tr>
+        <tr>       
+          <th>Data</th>  
+          <th>Fonte</th>
           <th>Nome</th>
           <th>Telefone</th>
           <th>Bairro</th>
-          <th>Cidade</th>
-          <th>Aceita Info</th>
-          <th>Data</th>
+          <th>Cidade</th> 
+          <th>Status</th>  
+          <th>Contatado por</th>            
+          <th>Resp pelo Life</th>         
+          <th>Comentarios</th> 
+                       
         </tr>
       </thead>
       <tbody id="tbody">
       </tbody>
     </table>
   </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
