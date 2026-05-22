@@ -74,3 +74,20 @@ th, td {
   padding: 4px;
   border-bottom: 1px solid #ddd;
 }
+
+.linha-filtros input,
+.linha-filtros select {
+
+  width: 100%;
+  padding: 6px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.dataTables_filter {
+  display: none !important;
+}

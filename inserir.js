@@ -67,6 +67,8 @@ async function inserir() {
     created_at: new Date(document.getElementById('datacadastro').value).toISOString(),
    
     responsavel: document.getElementById('respcontato').value, 
+
+    lider: document.getElementById('lider').value, 
     
     comentarios: document.getElementById('comentarios').value 
     

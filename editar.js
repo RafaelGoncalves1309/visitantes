@@ -63,6 +63,7 @@ async function carregarConvidado() {
   document.getElementById('origem').value = data.origem || '';
   document.getElementById('respcontato').value = data.responsavel || '';
   document.getElementById('status').value = data.status_convidado || '';
+  document.getElementById('lider').value = data.lider || '';
 
   document.getElementById('comentarios').value = data.comentarios || '';
 
@@ -91,6 +92,8 @@ async function salvar() {
     created_at: new Date(document.getElementById('datacadastro').value).toISOString(),
    
     responsavel: document.getElementById('respcontato').value, 
+
+    lider: document.getElementById('lider').value, 
     
     comentarios: document.getElementById('comentarios').value 
 

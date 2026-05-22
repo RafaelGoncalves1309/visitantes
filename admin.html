@@ -1,75 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <title>Admin - Convidados</title>
-  <link rel="stylesheet" href="admin.css">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Admin - Convidados
+  </title>
+
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+  <!-- DATATABLE -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+  >
+
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="topo">
-    <h2>Administração de Convidados</h2>
-    <button id="btnLogout">Sair</button>
-  </div>
+    <!-- TOPO -->
+    <div class="topo">
 
-  <!-- 🔎 Filtros -->
-  <div class="filtros">
-    <div class="campo">
-      <label>Data início</label>
-      <input type="date" id="dataInicio">
+      <h2>
+        Administração de Convidados
+      </h2>
+
+      <button id="btnLogout">
+        Sair
+      </button>
+
     </div>
 
-    <div class="campo">
-      <label>Data fim</label>
-      <input type="date" id="dataFim">
+    <!-- FILTROS -->
+    <div class="filtros">
+
+      <div class="campo">
+
+        <label>
+          Data início
+        </label>
+
+        <input
+          type="date"
+          id="dataInicio"
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Data fim
+        </label>
+
+        <input
+          type="date"
+          id="dataFim"
+        >
+
+      </div>
+
+      <button id="btnFiltrar">
+        Filtrar
+      </button>
+
+      <button id="btnLimpar">
+        Limpar Filtros
+      </button>
+
+      <button
+        onclick="
+          window.location.href='inserir.html'
+        "
+      >
+        Inserir Convidado
+      </button>
+
+      <a href="https://lifegroupspazscs.vercel.app/index.html" target="_blank">
+  <button>Mapa de Lifes</button>
+</a>
+
+      <button
+        onclick="
+          window.open(
+            'https://app.powerbi.com/links/uAjTG82csf?ctid=1120e9ac-4f0e-4919-ad68-58e59c2046cf&pbi_source=linkShare',
+            '_blank'
+          )
+        "
+      >
+        📊 Abrir Relatório
+      </button>
+
+      <button id="btnExportar">
+        Exportar Excel
+      </button>
+
     </div>
 
-    <button id="btnFiltrar">Filtrar</button>
-    
-    <button onclick="window.location.href='inserir.html'">Inserir Convidado</button>
+    <!-- TABELA -->
+    <div class="tabela-container">
 
-    <button onclick="window.open('https://app.powerbi.com/links/uAjTG82csf?ctid=1120e9ac-4f0e-4919-ad68-58e59c2046cf&pbi_source=linkShare', '_blank')">
-  📊 Abrir Relatório
-</button>
+      <table
+        id="tabelaConvidados"
+        class="display"
+        style="width:100%"
+      >
 
+        <thead>
 
+          <tr>
 
+            <th>Data</th>
+            <th>Fonte</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Status</th>
+            <th>Contatado por</th>
+            <th>Resp pelo Life</th>
+            <th>Comentários</th>
+            <th>Ações</th>
 
-    
+          </tr>
 
-    <button id="btnExportar">Exportar Excel</button>
-   
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+      </table>
+
+    </div>
+
   </div>
 
-  <!-- 📊 Tabela -->
-  <div class="tabela-container">
-    <table>
-      <thead>
-        <tr>       
-          <th>Data</th>  
-          <th>Fonte</th>
-          <th>Nome</th>
-          <th>Telefone</th>
-          <th>Bairro</th>
-          <th>Cidade</th> 
-          <th>Status</th>  
-          <th>Contatado por</th>            
-          <th>Resp pelo Life</th>         
-          <th>Comentarios</th> 
-                       
-        </tr>
-      </thead>
-      <tbody id="tbody">
-      </tbody>
-    </table>
-  </div>
-</div>
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-<script src="admin.js"></script>
+  <!-- DATATABLE -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- XLSX -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <!-- JS -->
+  <script src="admin.js"></script>
 
 </body>
+
 </html>
