@@ -125,7 +125,10 @@ document.addEventListener('DOMContentLoaded', function () {
       { data: 'telefone' },
       { data: 'bairro' },
       { data: 'cidade' },
-      { data: 'status_convidado' },
+      { data: 'status_convidado',
+          render: function(data) {
+        return `${getStatusIcon(data)} ${data || ''}`;   }
+      },
       { data: 'responsavel' },
       { data: 'lider' },
       { data: 'comentarios' },
