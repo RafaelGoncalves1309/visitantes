@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
       url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/pt-BR.json'
     },
     columns: [
+      { data: 'id' },
       { data: 'created_at', render: d => new Date(d).toLocaleString('pt-BR') },
       { data: 'origem' },
       { data: 'nome' },
