@@ -1,94 +1,245 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Relatórios</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="stylesheet" href="relatorios.css">
+  <title>
+    Convidados Paz Church São Caetano
+  </title>
 
+  <!-- CSS -->
+  <link
+    rel="stylesheet"
+    href="relatorios.css"
+  >
+
+  <!-- SUPABASE -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="relatorios.js" defer></script>
+
+  <!-- CHART JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- PLUGIN RÓTULOS -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+  <!-- JS -->
+  <script
+    src="relatorios.js"
+    defer
+  ></script>
+
 </head>
+
 <body>
 
   <div class="container">
 
-    <h1>Relatórios</h1>
+    <!-- ========================================= -->
+    <!-- TÍTULO -->
+    <!-- ========================================= -->
+    <div id="inicio">
+      <img src="logo_paz.png" alt="Logo Paz" id="logo">    
+      <h1>
+        Convidados Paz Church São Caetano
+      </h1>
+    </div>
+    <!-- ========================================= -->
+    <!-- FILTROS -->
+    <!-- ========================================= -->
 
+    <div class="filtros">
+
+      <div class="campo-filtro">
+
+        <label>Origem</label>
+
+        <select id="filtroOrigem">
+          <option value="">Todas as Origens</option>
+          <option value="QR-Code">QR-Code</option>
+          <option value="Pescaria">Pescaria</option>
+          <option value="Website Paz Church">Website Paz Church</option>
+        </select>
+
+      </div>
+
+      <div class="campo-filtro">
+
+        <label>Status</label>
+
+        <select id="filtroStatus">
+          <option value="">Todos os Status</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Em Conversa">Em Conversa</option>          
+          <option value="Transição">Em Transição</option>
+          <option value="Já tem Life">Já tem Life</option>
+          <option value="Novo">Novo</option>
+          <option value="Sem Interesse no Momento">Sem Interesse no Momento</option>
+          <option value="Sem Resposta">Sem Resposta</option>    
+        </select>
+
+      </div>
+
+      <div class="campo-filtro"> 
+        <label> Cidade </label> 
+        <select id="filtroCidade"> 
+          <option value=""> Todas as cidades </option>
+          <option value="Diadema"> Diadema </option>  
+          <option value="Mauá"> Mauá </option> 
+          <option value="Osasco"> Osasco </option> 
+          <option value="São Bernardo do Campo"> São Bernardo do Campo</option>
+          <option value="São Caetano do Sul"> São Caetano do Sul </option> 
+          <option value="São Paulo"> São Paulo </option> 
+        </select> 
+      </div>
+
+      <div class="campo-filtro">
+
+        <label>Data Inicial</label>
+
+        <input type="date" id="dataInicio">
+
+      </div>
+
+      <div class="campo-filtro">
+
+        <label>Data Final</label>
+
+        <input type="date" id="dataFim">
+
+      </div>
+
+      <div class="acoes-filtro">
+
+        
+
+        <button id="btnLimpar">
+          Limpar
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ========================================= -->
     <!-- CARDS -->
+    <!-- ========================================= -->
+
     <div class="cards">
 
-      <div class="card">
-        <h3>Total</h3>
+      <div class="card_total">
+        <h3>Total de Convidados</h3>
         <p id="totalConvidados">0</p>
       </div>
 
-      <div class="card">
-        <h3>Concluídos</h3>
-        <p id="totalConcluidos">0</p>
+      <div class="card_novos">
+        <h3>Novos Cadastros</h3>
+        <p id="totalNovos">0</p>
       </div>
 
-      <div class="card">
-        <h3>Sem Resposta</h3>
-        <p id="totalSemResposta">0</p>
+      <div class="card_contatados">
+        <h3>Contatados</h3>
+        <p id="totalContatados">0</p>
+        
+        <span id="percentualContatados">0%</span>
       </div>
 
-      <div class="card">
-        <h3>Dados Incorretos</h3>
-        <p id="totalDadosIncorretos">0</p>
+      <div class="card_24h">
+        <h3>Contatados em 24h</h3>
+        <p id="total24h">0</p>
+        
+        <span id="percentualContatados24h">0%</span>
+      </div>
+
+      <div class="card_integrados">
+        <h3>Integrados em LG</h3>
+        <p id="totalIntegrados">0</p>
+        
+        <span id="percentualIntegrados">0%</span>
+      </div>
+
+      
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- GRÁFICOS -->
+    <!-- ========================================= -->
+
+    <div class="linha_grafico">
+
+      <div class="grafico">
+        <h2>Distribuição por Data</h2>
+        <canvas id="graficoData"></canvas>
+      </div>
+
+      <div class="grafico">
+        <h2>Distribuição por Cidade</h2>
+        <canvas id="graficoCidade"></canvas>
       </div>
 
     </div>
 
+    <div class="linha_grafico">
 
-    <!-- RELATÓRIO POR STATUS -->
-    <div class="bloco">
-      <h2>Status</h2>
-      <div id="relatorioStatus"></div>
+      <div class="grafico grafico-pizza">
+        <h2>Distribuição por Fonte</h2>
+        <canvas id="graficoOrigem"></canvas>
+      </div>
+
+      <div class="grafico">
+        <h2>Status do Atendimento</h2>
+        <canvas id="graficoStatus"></canvas>
+      </div>
+
     </div>
 
-
-    <!-- RELATÓRIO POR ORIGEM -->
-    <div class="bloco">
-      <h2>Origem</h2>
-      <div id="relatorioOrigem"></div>
-    </div>
-
-
-    <!-- RELATÓRIO POR CIDADE -->
-    <div class="bloco">
-      <h2>Cidades</h2>
-      <div id="relatorioCidade"></div>
-    </div>
-
-
+    <!-- ========================================= -->
     <!-- TABELA -->
+    <!-- ========================================= 
+
     <div class="bloco">
 
-      <h2>Últimos Cadastros</h2>
+      <h2>
+        Últimos Cadastros
+      </h2>
 
-      <table>
+      <div class="tabela-wrapper">
 
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Cidade</th>
-            <th>Origem</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        <table>
 
-        <tbody id="tabelaRelatorio"></tbody>
+          <thead>
 
-      </table>
+            <tr>
 
-    </div>
+              <th>Nome</th>
+              <th>Cidade</th>
+              <th>Origem</th>
+              <th>Status</th>
 
-  </div>
+            </tr>
+
+          </thead>
+
+          <tbody id="tabelaRelatorio"></tbody>
+
+        </table>
+
+      </div>
+
+    </div> -->
+
+  </div> 
 
 </body>
-</html>
 
+</html>
 
