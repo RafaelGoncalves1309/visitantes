@@ -26,8 +26,8 @@ const coresStatus = {
   'Já tem Life': '#646196',
   'Sem Resposta': '#b21c0f',
   'Transição': '#086304',
-  'Novo': '#a49f99',
-  'Sem Interesse no Momento': '#55211e'
+  'Novo': '#b9b1a7',
+  'Sem Interesse no Momento': '#6a8a9c'
 };
 
 // =========================================
