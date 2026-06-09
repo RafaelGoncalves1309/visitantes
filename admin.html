@@ -40,7 +40,7 @@
       </h2>
 
       <button id="btnLogout">
-        Sair
+       ⏻ Sair
       </button>
 
     </div>
@@ -50,7 +50,7 @@
 
       <div class="campo">
 
-        <label>
+        <label class="data_escolha">
           Data início
         </label>
 
@@ -63,7 +63,7 @@
 
       <div class="campo">
 
-        <label>
+        <label class="data_escolha">
           Data fim
         </label>
 
@@ -75,11 +75,11 @@
       </div>
 
       <button id="btnFiltrar">
-        Filtrar
+        🔎 Filtrar
       </button>
 
       <button id="btnLimpar">
-        Limpar Filtros
+        🧹 Limpar Filtros
       </button>
 
       <button
@@ -87,11 +87,12 @@
           window.location.href='inserir.html'
         "
       >
-        Inserir Convidado
+        ➕ Inserir Convidado
       </button>
 
       <a href="https://lifegroupspazscs.vercel.app/index.html" target="_blank">
-        <button>Mapa de Lifes</button>
+        <button>
+          📍 Mapa de Lifes</button>
       </a>
 
       <button onclick="window.open('relatorios.html', '_blank')">
@@ -99,8 +100,19 @@
       </button>
 
       <button id="btnExportar">
-        Exportar Excel
+        📁 Exportar Excel
       </button>
+
+    </div>
+
+      <!-- BUSCA -->
+    <div class="busca-global">
+
+      <input
+        type="text"
+        id="buscaGlobal"
+        placeholder="Buscar na tabela..."
+      >
 
     </div>
 

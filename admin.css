@@ -43,6 +43,24 @@ button:hover {
   flex-wrap: wrap;
 }
 
+/* =========================================
+BUSCA
+========================================= */
+
+.busca-global{
+  margin-bottom:-25px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.busca-global input{
+  width:300px;
+  max-width:100%;
+  padding:6px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
 .campo {
   display: flex;
   flex-direction: column;
@@ -90,4 +108,14 @@ th, td {
 
 .dataTables_filter {
   display: none !important;
+}
+
+.data_escolha{
+  font-size: 13px;
+  font-weight: bold;
+  color: #11005e;
+}
+
+.dataTables_length {
+  margin-bottom:10px;
 }

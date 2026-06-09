@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnLogout = document.getElementById('btnLogout');
   const btnExportar = document.getElementById('btnExportar');
   const btnFiltrar = document.getElementById('btnFiltrar');
+  const buscaGlobal = document.getElementById('buscaGlobal');
 
 
 
@@ -157,12 +158,24 @@ function limparFiltros() {
 
   document.getElementById('dataInicio').value = '';
   document.getElementById('dataFim').value = '';
+  buscaGlobal.value = '';
 
 
   carregarDados().then(() => {
     btn.innerText = 'Limpar Filtros';
   });
 }
+
+  // =========================================
+  // BUSCA GLOBAL
+  // =========================================
+
+  buscaGlobal.addEventListener('keyup', function () {
+
+    tabela.search(this.value).draw();
+
+  });
+  
     // =========================================
     // BOTÃO EDITAR
     // =========================================
