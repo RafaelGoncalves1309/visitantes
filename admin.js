@@ -224,6 +224,7 @@ function limparFiltros() {
     }
 
     const dadosFormatados = data.map(item => ({
+      ID: item.id || '',
       Data: new Date(item.created_at).toLocaleString('pt-BR'),
       Fonte: item.origem || '',
       Nome: item.nome || '',

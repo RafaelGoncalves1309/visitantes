@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Admin - Convidados
+  </title>
+
+  <!-- CSS PRINCIPAL -->
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+
+  <!-- DATATABLE -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.dataTables.min.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css"
+  >
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- TOPO -->
+    <div class="topo">
+
+      <div class="titulo-area">
+
+        <h2>
+          Administração de Convidados
+        </h2>
+
+        <span>
+          Painel de gerenciamento
+        </span>
+
+      </div>
+
+      <button
+        id="btnLogout"
+        class="btn btn-danger"
+      >
+        🚪 Sair
+      </button>
+
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+      <div class="card">
+        <span>Total</span>
+        <strong id="cardTotal">0</strong>
+      </div>
+
+      <div class="card">
+        <span>Em Conversa</span>
+        <strong id="cardConversa">0</strong>
+      </div>
+
+      <div class="card">
+        <span>Concluídos</span>
+        <strong id="cardConcluidos">0</strong>
+      </div>
+
+      <div class="card">
+        <span>Sem Resposta</span>
+        <strong id="cardSemResposta">0</strong>
+      </div>
+
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filtros">
+
+      <div class="campo">
+
+        <label>
+          Data início
+        </label>
+
+        <input
+          type="date"
+          id="dataInicio"
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Data fim
+        </label>
+
+        <input
+          type="date"
+          id="dataFim"
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Status
+        </label>
+
+        <select id="filtroStatus">
+
+          <option value="">
+            Todos
+          </option>
+
+          <option>
+            Novo
+          </option>
+
+          <option>
+            Em Conversa
+          </option>
+
+          <option>
+            Sem Resposta
+          </option>
+
+          <option>
+            Concluído
+          </option>
+
+          <option>
+            Já tem Life
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Cidade
+        </label>
+
+        <input
+          type="text"
+          id="filtroCidade"
+          placeholder="Digite a cidade"
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Responsável
+        </label>
+
+        <input
+          type="text"
+          id="filtroResponsavel"
+          placeholder="Nome do responsável"
+        >
+
+      </div>
+
+      <button
+        id="btnFiltrar"
+        class="btn btn-primary"
+      >
+        🔎 Filtrar
+      </button>
+
+      <button
+        id="btnLimpar"
+        class="btn btn-secondary"
+      >
+        🧹 Limpar
+      </button>
+
+      <button
+        onclick="window.location.href='inserir.html'"
+        class="btn btn-success"
+      >
+        ➕ Inserir
+      </button>
+
+      <button
+        onclick="window.open('relatorios.html', '_blank')"
+        class="btn btn-warning"
+      >
+        📊 Relatórios
+      </button>
+
+      <button
+        id="btnExportar"
+        class="btn btn-success"
+      >
+        📁 Exportar Excel
+      </button>
+
+    </div>
+
+    <!-- BUSCA -->
+    <div class="busca-global">
+
+      <input
+        type="text"
+        id="buscaGlobal"
+        placeholder="Buscar na tabela..."
+      >
+
+    </div>
+
+    <!-- TABELA -->
+    <div class="tabela-container">
+
+      <table
+        id="tabelaConvidados"
+        class="display nowrap"
+        style="width:100%"
+      >
+
+        <thead>
+
+          <tr>
+
+            <th>ID</th>
+            <th>Data</th>
+            <th>Fonte</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Status</th>
+            <th>Contatado por</th>
+            <th>Resp pelo Life</th>
+            <th>Comentários</th>
+            <th>Ações</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- DATATABLE -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script src="https://cdn.datatables.net/fixedheader/3.4.0/js/dataTables.fixedHeader.min.js"></script>
+
+  <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- XLSX -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+  <!-- JS -->
+  <script src="admin_new.js"></script>
+
+</body>
+
+</html>
+```
