@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
       case 'Sem Resposta': return '🔴';
       case 'Sem Interesse no Momento': return '🟨';
       case 'Concluído': return '✅';
-      case 'Já tem Life': return '🟢';
+      case 'Já tem Life - SCS': return '🟢';
+      case 'Outro Campus / Cidade': return '📍'; 
       case 'Transição': return '🔵';
       case 'Dados Incorretos': return '❌';
       default: return '❔';
